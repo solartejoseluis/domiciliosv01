@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domicilios V01</title>
+  <!-- boostrap 5.2.2 css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- datatables 1.12.1 css -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.css" />
+  <!-- estilos personalizados -->
+  <!--  <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  <!-- jquery 3.6.1 js -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <!-- bootstrap 5.2.2 js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <!-- datatables 1.12.1 js -->
+  <script src="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.js"></script>
+  <!-- Plugin de validacion para formularios -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+  <!-- script para desplegar select Barrios -->
+  <script>
+    $(document).ready(function() {
+    $.ajax({
+      type: "POST",
+      url: "getBarrio.php",
+      success: function(response) {
+        $('.selectBarrio select').html(response).fadeIn();
+      }
+    });
+  });
+  </script>
+  <!-- script para desplegar select users -->
+  <script>
+    $(document).ready(function() {
+    $.ajax({
+      type: "POST",
+      url: "getUser.php",
+      success: function(response) {
+        $('.selectUser select').html(response).fadeIn();
+      }
+    });
+  });
+  </script>
+  <!-- script para desplegar select transportadores -->
+  <script>
+    $(document).ready(function() {
+    $.ajax({
+      type: "POST",
+      url: "getTransportador.php",
+      success: function(response) {
+        $('.selectTransportador select').html(response).fadeIn();
+      }
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid mb-3" id="id_titulo">
+  <h1>CONTROL DE DOMICILIOS Versión 0.1</h1>
+    <button type="button" class="btn btn-primary" id="id_btnAdd" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg> NUEVO DOMICILIO</button>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <table class="table" id="id_tblDomicilios">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>BARRIO</td>
+              <td>COMUNA</td>
+              <td>TRNSPORT</td>
+              <td>VALOR</td>
+              <td>H.SALIDA</td>
+              <td>H.LLEGADA</td>
+              <td>ASIGNADO POR</td>
+              <td>OBSERVACION</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <!-- INICIA FORMULARIO EMERGENTE-->
+    <div class="modal fade" id="id_mdlDomicilios" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="">NUEVO DOMICILIO</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="id_frmDomicilios">
+              <div class="mb-3">
+                <input type="hidden" class="form-control" id="id_npt_domi_id">
+              </div>
+
+              <div class="mb-3">
+                <input type="hidden" class="form-control" id="id_npt_barrio_id">
+                <div class="selectBarrio">
+                  Elige un Barrio
+                  <select class="form-select" id="id_slct_barrio_id"></select>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <input type="hidden" class="form-control" id="id_npt_trans_id">
+                <div class="selectTransportador">
+                  TRANSPORTADOR:
+                  <select class="form-select" id="id_slct_trans_id"></select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="id_npt_domi_valor" class="col-form-label">VALOR:</label>
+                <input type="text" class="form-control" id="id_npt_domi_valor"placeholder="Digite el valor">
+              </div>
+
+              <div class="mb-3">
+                <label for="id_npt_domi_hora_salida" class="col-form-label">H.SALIDA:</label>
+                <input type="text" class="form-control" id="id_npt_domi_hora_salida"placeholder="Digite la hora de salida">
+              </div>
+
+              <div class="mb-3">
+                <label for="id_npt_domi_hora_llegada" class="col-form-label"> H.LLEGADA:</label>
+                <input type="text" class="form-control" id="id_npt_domi_hora_llegada"placeholder="Digite la hora de llegada">
+              </div>
+
+              <div class="mb-3">
+                <input type="hidden" class="form-control" id="id_npt_user_id">
+                <div class="selectUser">
+                  ASIGNA:
+                  <select class="form-select" id="id_slct_user_id"></select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="id_npt_domi_observacion" class="col-form-label">OBSERVACIÓN:</label>
+                <input type="text" class="form-control" id="id_npt_domi_observacion"placeholder="Digite la observación">
+              </div>
+
+
+
+
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="id_btnConfirmAdd">Confirmar Agregar</button>
+            <button type="submit" class="btn btn-primary" id="id_btnConfirmEdit">Confirmar Modificar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    //tomar el valor del select y ponerlo en input
+    $("#Tipo_select").change(function() {
+      $('#Tipo').val($(this).val());
+    });
+    </script>
+    <!-- FIN FORMULARIO EMERGENTE -->
+  </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let tabla1 = $("#id_tblDomicilios").DataTable({
+      "ajax": {
+        url: "domi_data.php?accion=listar_domicilio",
+        dataSrc: ""
+      },
+      "columns": [
+        { "data": "domi_id" },
+        { "data": "barrio_nombre" },
+        { "data": "barrio_comuna" },
+        { "data": "trans_nombre" },
+        { "data": "domi_valor" },
+        { "data": "domi_hora_salida" },
+        { "data": "domi_hora_llegada" },
+        { "data": "user_nombre" },
+        { "data": "domi_observacion" },
+        { "data": null, "orderable": false },
+        { "data": null, "orderable": false }
+      ],
+      "columnDefs": [{
+          targets: 9,
+          "defaultContent": "<button class='btn btn-primary btn-sm botonmodificar' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pen' viewBox='0 0 16 16'><path d='m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></button>",
+          data: null
+        },
+
+        {
+          targets: 10,
+          "defaultContent": "<button class='btn btn-primary botonborrar' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></button>",
+          data: null
+        }
+      ],
+    });
+
+     //Eventos de botones de la aplicación
+    $('#id_btnAdd').click(function() {
+      $('#id_btnConfirmAdd').show();
+      $('#id_btnConfirmEdit').hide();
+      limpiarFormulario();
+      $("#id_mdlDomicilios").modal('show');
+    });
+
+
+    $('#id_btnConfirmAdd').click(function() {
+      //codigo que valida el formulario y lo agrega
+      let valida_descripcion = $('#Descripcion').val();
+      let valida_precio = $('#Precio').val();
+      let valida_tipo = $('#Tipo_select').val();
+      if (valida_descripcion.trim() == '') {
+        alert('por favor digite una descripcion.');
+        $('#Descripcion').focus();
+        return false;
+      } else if (valida_precio.trim() == '') {
+        alert(' Por favor digite un precio.');
+        $('#Precio').focus();
+        return false;
+      } else if (valida_tipo.trim() == '') {
+        alert(' Por favor elija un Tipo.');
+        $('#Tipo_select').focus();
+        return false;
+      } else {
+        //codigo que se ejecuta con todo validado
+        $("#id_mdlDomicilios").modal('hide');
+        let registro = recuperarDatosFormulario();
+        agregarRegistro(registro);
+        alert("todo validado");
+      }
+    });
+    // fin validacion
+
+
+    $('#id_btnConfirmEdit').click(function() {
+      $("#id_mdlDomicilios").modal('hide');
+      let registro = recuperarDatosFormulario();
+      modificarRegistro(registro);
+    });
+
+    $('#id_tblDomicilios tbody').on('click', 'button.botonmodificar', function() {
+      $('#id_btnConfirmAdd').hide();
+      $('#id_btnConfirmEdit').show();
+      let registro = tabla1.row($(this).parents('tr')).data();
+      recuperarRegistro(registro.codigo);
+    });
+
+    $('#id_tblDomicilios tbody').on('click', 'button.botonborrar', function() {
+      if (confirm("¿Confirma la Eliminación?")) {
+        let registro = tabla1.row($(this).parents('tr')).data();
+        borrarRegistro(registro.codigo);
+      }
+    });
+    // funciones que interactuan con el formulario de entrada de datos
+
+    function limpiarFormulario() {
+      $('#id_npt_domi_id').val('');
+      $('#Descripcion').val('');
+      $('#Precio').val('');
+      $('#Tipo_select').val('');
+      $('#Tipo').val('');
+    }
+
+    function recuperarDatosFormulario() {
+      let registro = {
+        codigo: $('#id_npt_domi_id').val(),
+        descripcion: $('#Descripcion').val(),
+        precio: $('#Precio').val(),
+        tipo: $('#Tipo').val(),
+      };
+      return registro;
+    }
+
+    // funciones para comunicarse con el servidor via ajax
+    function agregarRegistro(registro) {
+      //$("#id_frmDomicilios").validate();
+      $.ajax({
+        type: 'POST',
+        url: 'domi_data.php?accion=agregar',
+        data: registro,
+        success: function(msg) {
+          tabla1.ajax.reload();
+        },
+        error: function() {
+          alert("Cifras Mal Escritas o Datos Incompletos");
+        }
+      });
+    }
+
+    function borrarRegistro(codigo) {
+      $.ajax({
+        type: 'GET',
+        url: 'domi_data.php?accion=borrar&codigo=' + codigo,
+        data: '',
+        success: function(msg) {
+          tabla1.ajax.reload();
+        },
+        error: function() {
+          alert("Hay un problema borrando");
+        }
+      });
+    }
+
+    function recuperarRegistro(codigo) {
+      $.ajax({
+        type: 'GET',
+        url: 'domi_data.php?accion=consultar&codigo=' + codigo,
+        data: '',
+        success: function(datos) {
+          $('#id_npt_domi_id').val(datos[0].codigo);
+          $('#Descripcion').val(datos[0].descripcion);
+          $('#Precio').val(datos[0].precio);
+          $('#Tipo').val(datos[0].tipo);
+          $("#id_mdlDomicilios").modal('show');
+        },
+        error: function() {
+          alert("Hay un problema recuperando");
+        }
+      });
+    }
+
+    function modificarRegistro(registro) {
+      $.ajax({
+        type: 'POST',
+        url: 'domi_data.php?accion=modificar&codigo=' + registro.codigo,
+        data: registro,
+        success: function(msg) {
+          tabla1.ajax.reload();
+        },
+        error: function() {
+          alert("Hay un problema modificando");
+        }
+      });
+    }
+
+  });
+  </script>
+</body>

@@ -1,10 +1,11 @@
-2022-12-13
+2022-12-13_Mar
 # PROYECTO DOMICILIOSV01
-En el día de ayer iba evaluando la oportunidad de montar una version muy basica de la aplicación.
-esta es la versión cero, la version mas básica, que puedo poner a funcionar esta semana.
+En el día de ayer iba evaluando la oportunidad de montar una versión muy basica de la aplicación.
+esta es la versión cero, la versión mas básica, que puedo poner a funcionar mas pronto que la mas elaborada, la idea es ajustar la evolucion de proyecto a la metodologia ágil.
 
-la estructura y funcionamiento de esta aplicación es el mismo que ya tengo eleborado y funcionando en google docs, voy a compañar una captura de pantalla de esta hoja.
+La estructura y funcionamiento de esta aplicación es el mismo que ya tengo elaborado y funcionando en google docs de la drogueria Suricentro, voy a compañar una captura de pantalla de esta hoja.
 
+## pantalla principal
 los campos que mostraría la pantalla principal son:
 
 [BARRIOS]barrio: select
@@ -16,8 +17,7 @@ hora de llegada. datapocker de fecha/hora
 [USERS]asignado por: select
 observaciones: campo de texto largo.
 
-
-## La base de datos estaria organizada de la siguiente manera:
+## La base de datos
 nombre de la base de datos: domicilios_v01
 
 ### TABLA: DOMICILIOS
@@ -45,7 +45,6 @@ user_id
 user_nombre
 user_apellido
 
-
 ### Relaciones entre tablas
 Ahora vamos a crear los index y las foreign keys en la tabla domicilios
 
@@ -66,10 +65,30 @@ ALTER TABLE domicilios ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 ALTER TABLE domicilios ADD FOREIGN KEY (trans_id) REFERENCES transportadores(trans_id);
 ALTER TABLE domicilios ADD FOREIGN KEY (barrio_id) REFERENCES barrios(barrio_id);
 ```
-
 Vamos a crear el nuevo proyecto en una carpeta de htdocs
-Archivos incluidos:
 
-datos.php
-index.html
+## Resumen de lo hecho
+- se copiaron los archivos del crud del proyecto app_domicilios que tiene un enfoque mas adelantado.
+- se adapta el archivo pdo para acceder a la conexion.
+- se adecua el archivo domi_data.php
+- se adecua el archivo domi index.html
+- se crean nuevos archivos para manejo de los selects: getBarrio.php, getUser.php y getTransportador.php
+- se crea la base de datos y las relaciones
+- se sube el proyecto al github con el nombre domiciliosv01. incluyendo el codigo de la base de datos hasta el momento.
+
+### 2022-12-14_mie
+- Ajustes de la sección de validación del modal
+- Estandarizando los nombres en la aplicacion:
+nomeclaturas para asignar nombres a los elementos en la aplicación:
+### los campos de la base de datos
+	nombretabla_nombrecampo
+### Elementos del Dom
+	tblDomicilios
+	frmPrincipal
+	mdlPrincipal
+	Uso camelCase, en la primera parte va el tipo de elemento y en la segunda parte va el
+### Elementos del dom que continen datos.
+	por ejemplo estos: input, select, checkbox, creo abreviaturas suprimiendo las vocales por ejemplo: input = npt, select = slct, checkbox = chckbx
+	npt-nombre_campo
+	aqui uso  abreviatura luego el guión medio y luego el nombre de la variable o campo de la base de datos.
 

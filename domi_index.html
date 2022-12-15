@@ -204,7 +204,7 @@
 
 
         $('#btnConfirmAdd').click(function() {
-            //codigo que valida el formulario y lo agrega
+            //validar el formulario y lo agrega
             let valida_barrio =$('#slct-barrio').val();
             let valida_transportador =$('#slct-trans').val();
             let valida_valor =$('#npt-domi_valor').val();
@@ -236,7 +236,7 @@
                 $('#slct-user').focus();
                 return false;
             } else {
-                //codigo que se ejecuta con todo validado
+                //ejecutar con todo validado
                 $("#mdlDomicilios").modal('hide');
                 let registro = recuperarDatosFormulario();
                 agregarRegistro(registro);
@@ -244,7 +244,6 @@
             }
         });
         // fin validacion
-
 
         $('#btnConfirmEdit').click(function() {
             $("#mdlDomicilios").modal('hide');
@@ -256,31 +255,41 @@
             $('#btnConfirmAdd').hide();
             $('#btnConfirmEdit').show();
             let registro = tabla1.row($(this).parents('tr')).data();
-            recuperarRegistro(registro.codigo);
+            recuperarRegistro(registro.domi_id);
         });
 
         $('#tblDomicilios tbody').on('click', 'button.btnDel', function() {
             if (confirm("¿Confirma la Eliminación?")) {
                 let registro = tabla1.row($(this).parents('tr')).data();
-                borrarRegistro(registro.codigo);
+                borrarRegistro(registro.domi_id);
             }
         });
         // funciones que interactuan con el formulario de entrada de datos
 
         function limpiarFormulario() {
             $('#npt-domi_id').val('');
-            $('#Descripcion').val('');
-            $('#Precio').val('');
-            $('#Tipo_select').val('');
-            $('#Tipo').val('');
+            $('#npt-barrio_id').val('');
+            $('#slct-barrio').val('0');
+            $('#npt-trans_id').val('');
+            $('#slct-trans').val('0');
+            $('#npt-domi_valor').val('');
+            $('#npt-domi_hora_salida').val('');
+            $('#npt-domi_hora_llegada').val('');
+            $('#npt-user_id').val('');
+            $('#slct-user').val('0');
+            $('#npt-domi_observacion').val('');
         }
 
         function recuperarDatosFormulario() {
             let registro = {
-                codigo: $('#npt-domi_id').val(),
-                descripcion: $('#Descripcion').val(),
-                precio: $('#Precio').val(),
-                tipo: $('#Tipo').val(),
+            domi_id:$('#npt-domi_id').val(),
+            barrio_id:$('#npt-barrio_id').val(),
+            trans_id:$('#npt-trans_id').val(),
+            domi_valor:$('#npt-domi_valor').val(),
+            domi_hora_salida:$('#npt-domi_hora_salida').val(),
+            domi_hora_llegada:$('#npt-domi_hora_llegada').val(),
+            user_id:$('#npt-user_id').val(),
+            domi_observacion:$('#npt-domi_observacion').val(),
             };
             return registro;
         }
@@ -300,10 +309,10 @@
             });
         }
 
-        function borrarRegistro(codigo) {
+        function borrarRegistro(domi_id) {
             $.ajax({
                 type: 'GET',
-                url: 'domi_data.php?accion=borrar_domicilio&codigo=' + codigo,
+                url: 'domi_data.php?accion=borrar_domicilio&domi_id=' + domi_id,
                 data: '',
                 success: function(msg) {
                     tabla1.ajax.reload();
@@ -314,17 +323,26 @@
             });
         }
 
-        function recuperarRegistro(codigo) {
+        function recuperarRegistro(domi_id) {
             $.ajax({
                 type: 'GET',
-                url: 'domi_data.php?accion=consultar_domicilio&codigo=' + codigo,
+                url: 'domi_data.php?accion=consultar_domicilio&domi_id=' + domi_id,
                 data: '',
                 success: function(datos) {
-                    $('#npt-domi_id').val(datos[0].codigo);
-                    $('#Descripcion').val(datos[0].descripcion);
-                    $('#Precio').val(datos[0].precio);
-                    $('#Tipo').val(datos[0].tipo);
-                    $("#mdlDomicilios").modal('show');
+            $('#npt-domi_id').val(datos[0].domi_id);
+            $('#npt-barrio_id').val(datos[0].barrio_id);
+            $('#npt-trans_id').val(datos[0].trans_id);
+
+//revisar esto, en construccion...
+    $('#slct-barrio > option[value="data.barrio_id"]').attr('selected', 'selected');
+
+
+            $('#npt-domi_valor').val(datos[0].domi_valor);
+            $('#npt-domi_hora_salida').val(datos[0].domi_hora_salida);
+            $('#npt-domi_hora_llegada').val(datos[0].domi_hora_llegada);
+            $('#npt-user_id').val(datos[0].user_id);
+            $('#npt-domi_observacion').val(datos[0].domi_observacion);
+            $("#mdlDomicilios").modal('show');
                 },
                 error: function() {
                     alert("Hay un problema recuperando");
@@ -335,7 +353,7 @@
         function modificarRegistro(registro) {
             $.ajax({
                 type: 'POST',
-                url: 'domi_data.php?accion=modificar_domicilio&codigo=' + registro.codigo,
+                url: 'domi_data.php?accion=modificar_domicilio&domi_id=' + registro.domi_id,
                 data: registro,
                 success: function(msg) {
                     tabla1.ajax.reload();

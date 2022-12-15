@@ -54,23 +54,31 @@ case 'agregar_domicilio':
     break;
 
 case 'borrar_domicilio':
-    $sql = "DELETE FROM domicilios where codigo=$_GET[domi_id]";
+    $sql = "DELETE FROM domicilios where domi_id=$_GET[domi_id]";
     $response = $pdo->exec($sql);
     echo json_encode($response);
     break;
 
 case 'consultar_domicilio':
     $sql = "SELECT
-        domi_id,
-        barrio_id,
-        trans_id,
-        domi_valor,
-        domi_hora_salida,
-        domi_hora_llegada,
-        user_id,
-        domi_observacion
-    FROM domicilios
-    WHERE codigo=$_GET[domi_id]";
+        domicilios.domi_id,
+        barrios.barrio_nombre,
+        barrios.barrio_comuna,
+        transportadores.trans_nombre,
+        domicilios.domi_valor,
+        domicilios.domi_hora_salida,
+        domicilios.domi_hora_llegada,
+        users.user_nombre,
+        domicilios.domi_observacion
+        FROM domicilios
+        INNER JOIN barrios
+        ON domicilios.barrio_id=barrios.barrio_id
+        INNER JOIN transportadores
+        ON domicilios.trans_id=transportadores.trans_id
+        INNER JOIN users
+        ON domicilios.user_id=users.user_id
+        WHERE domi_id=$_GET[domi_id]
+    ";
     $stmt = $pdo -> prepare($sql);
     $stmt -> execute();
     $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
@@ -87,7 +95,7 @@ case 'modificar_domicilio':
         domi_hora_llegada='$_POST[domi_hora_llegada]',
         user_id=$_POST[user_id],
         domi_observacion=$_POST[domi_observacion]
-    WHERE codigo=$_GET[domi_id]";
+    WHERE domi_id=$_GET[domi_id]";
     $response = $pdo->exec($sql);
     echo json_encode($response);
     break;

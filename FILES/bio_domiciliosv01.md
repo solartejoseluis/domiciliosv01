@@ -92,3 +92,24 @@ nomeclaturas para asignar nombres a los elementos en la aplicación:
 	npt-nombre_campo
 	aqui uso  abreviatura luego el guión medio y luego el nombre de la variable o campo de la base de datos.
 
+2022-12-14_mie
+14:24
+### Plan de trabajo:
+
+- Completar los procesos de comunicación del Crud.
+- Ajustar el diseño del Modal
+
+## PROBLEMA CON EL SELECT
+Al pulsar el BOTON EDITAR en la pantalla principal aparecen los datos de los input pero no cargan los select.
+
+Resulta que los select de este modal de EDICION están asociados al código que los carga en el formulario de AGREGAR. La función de carga es getBarrio.php por dar un ejemplo.
+
+Por ejemplo en la función de get se indica un codigo para que se pueda mostrar en el selct como opcion predeterminada
+
+### ¿Que Necesito?
+Necesito que select se cargue con el valor de una consulta.
+
+¿Cómo poner un valor en el select?
+
+
+

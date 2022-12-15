@@ -30,24 +30,20 @@ case 'listar_domicilio':
 
 case 'agregar_domicilio':
     $sql = "INSERT INTO domicilios(
-        domi_id,
         barrio_id,
         trans_id,
         domi_valor,
         domi_hora_salida,
-        domi_hora_llegada,
         user_id,
         domi_observacion
         )
     VALUES (
-        $_POST[domi_id],
         $_POST[barrio_id],
         $_POST[trans_id],
         $_POST[domi_valor],
         '$_POST[domi_hora_salida]',
-        '$_POST[domi_hora_llegada]',
         $_POST[user_id],
-        $_POST[domi_observacion]
+        '$_POST[domi_observacion]'
     )";
     $response = $pdo->exec($sql);
     echo json_encode($response);
@@ -60,6 +56,7 @@ case 'borrar_domicilio':
     break;
 
 case 'consultar_domicilio':
+// Para cargar el formulario de edicion del  domicilio
     $sql = "SELECT
         domicilios.domi_id,
         barrios.barrio_nombre,

@@ -115,3 +115,38 @@ Necesito que select se cargue con el valor de una consulta.
 voy haciendo pruebas con el select, me parece que hay que hacer pruebas para cargar el valor que sale de la consulta sql en el select, porque lo puedo cargar facilmente en un input, pero para el select ya ofrece problemas.. o no.. y que tal si compraro la carga que se hace en el input y la asimilo al select.
 Al resolver esto quedaria listo porque el select cargaria el valor consultado con el sql y tendria disponible la lista de opciones para modificarla, esto de la modificacion ya se ha construido en la funcion de llenado del modal por primera vez.
 
+### 2022-12-15jue_14-10
+Otra de las posibilidades sería:
+crear un formulario diferente para la edición que muestre los datos originales y que al lado derecho muestre otro formulario en blanco con los campos para modificar.
+
+Entonces debería hacer una consulta del grupo de datos teniendo en cuenta el domi_id y presentar los datos en un modal que al lado derecho tenga todos los campos en blanco.
+
+Estoy buscando información sobre esto del select, pero no obtengo algo que funcione de manera rapida, hay muchos ejemplos pero hasta ahora no me funciona asi que voy a irma por la otra solucion:
+
+Mostrar el modal en dos partes a la izquierda los datos que recojo y a la derecha los campos para introducir un cambio.
+
+Entonces en esta jornada voy a hacer dos cosas:
+La primera es rediseñar el formulario de domicilio nuevo, y lo voy a poner a funcionar porque no está enviando los datos a la base de datos.
+
+
+## ARREGLO DE LA CONEXION DEL FORMULARIO MODAL.
+
+
+2022-12-15jue_18:44
+hoy se realizo:
+
+- se arregla el acceso al formulario de agregar
+- se elimina del formulario de agregar el campo de hora de llegada
+- Se divide el formulario de agregar y el de editar
+- Ajuste de la distribución del formulario modal de nuevos domicilios
+- Se coloca un botón para agregar automáticamente la hora de salida
+
+### paso siguientes:
+- Crear un boton para agregar las horas de llegada, que podria ser nmostrnaod un boton en el campo que este vacio, cuando se pulse se agrega la hora de llegada automaticamente al campo y desaparece el boton.
+
+- construir el formulario de edicion de los registro, com ose ha planteado mas arriba.
+
+- se podria comenzar con la construccion del modulo de validacion el cual permitiria ahorrar mas tiempo en el  agregado de nuevos registros y abre la posibilidad para ir activando otras funciones por perfiles.
+
+
+

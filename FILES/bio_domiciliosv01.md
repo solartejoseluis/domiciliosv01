@@ -111,5 +111,7 @@ Necesito que select se cargue con el valor de una consulta.
 
 ¿Cómo poner un valor en el select?
 
-
+2022-12-15jue_10:10
+voy haciendo pruebas con el select, me parece que hay que hacer pruebas para cargar el valor que sale de la consulta sql en el select, porque lo puedo cargar facilmente en un input, pero para el select ya ofrece problemas.. o no.. y que tal si compraro la carga que se hace en el input y la asimilo al select.
+Al resolver esto quedaria listo porque el select cargaria el valor consultado con el sql y tendria disponible la lista de opciones para modificarla, esto de la modificacion ya se ha construido en la funcion de llenado del modal por primera vez.
 

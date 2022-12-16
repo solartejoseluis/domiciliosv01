@@ -2,477 +2,492 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Domicilios V01</title>
-    <!-- CDN boostrap 5.2.2 css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- CDN datatables 1.12.1 css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.css" />
-    <!-- CDN jquery 3.6.1 js -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <!-- CDN bootstrap 5.2.2 js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <!-- CDN datatables 1.12.1 js -->
-    <script src="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domicilios V01</title>
+  <!-- CDN boostrap 5.2.2 css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- CDN datatables 1.12.1 css -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.css" />
+  <!-- CDN jquery 3.6.1 js -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <!-- CDN bootstrap 5.2.2 js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <!-- CDN datatables 1.12.1 js -->
+  <script src="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/382e1ebb20.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container-fluid mb-3" id="titulo">
+  <div class="container-fluid mb-3" id="titulo">
+    <div class="row">
+<div>
         <h1>CONTROL DE DOMICILIOS Versión 0.1</h1>
-        <button type="button" class="btn btn-primary" id="btn-Add" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" /></svg> NUEVO DOMICILIO</button>
+</div>
     </div>
-    <div class="container-fluid" id="contenido">
-        <div class="row">
-            <div class="col-12">
-                <table class="table" id="tblDomicilios">
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>BARRIO</td>
-                            <td>COMUNA</td>
-                            <td>TRNSPORT</td>
-                            <td>VALOR</td>
-                            <td>H.SALIDA</td>
-                            <td>H.LLEGADA</td>
-                            <td>ASIGNADO POR</td>
-                            <td>OBSERVACION</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+    <div class="row">
+      <div class="col-6">
+        <h1> FECHA ACTUAL</h1>
+      </div>
+      <div class="col-6 mr-auto">
+        <button type="button" class="btn btn-primary" id="btn-Add" data-bs-toggle="modal">NUEVO DOMICILIO <i class="fa-solid fa-circle-plus"></i></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" id="contenido">
+    <div class="row">
+      <div class="col-12">
+        <table class="table" id="tblDomicilios">
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>BARRIO</td>
+              <td>COMUNA</td>
+              <td>TRNSPORT</td>
+              <td>VALOR</td>
+              <td>H.SALIDA</td>
+              <td>H.LLEGADA</td>
+              <td>ASIGNADO POR</td>
+              <td>OBSERVACION</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- INICIA MODAL NUEVO DOMICILIO-->
+  <div class="modal fade" data-bs-backdrop="static" id="mdlDomicilios" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">NUEVO DOMICILIO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-    <!-- INICIA MODAL NUEVO DOMICILIO-->
-    <div class="modal fade" data-bs-backdrop="static" id="mdlDomicilios" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">NUEVO DOMICILIO</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="frmDomicilios">
-                        <div class="row">
-                            <input type="hidden" class="form-control" id="npt-domi_id">
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 ms-auto">
-                                <label for="slct-barrio" class="col-form-label">Barrio:</label>
-                            </div>
-                            <div class="col-md-9 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-barrio_id">
-                                <div class="selectBarrio">
-                                    <select class="form-select" id="slct-barrio"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 ms-auto">
-                                <label for="slct-trans" class="col-form-label">Transportador:</label>
-                            </div>
-                            <div class="col-md-9 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-trans_id">
-                                <div class="selectTransportador">
-                                    <select class="form-select" id="slct-trans"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 ms-auto">
-                                <label for="npt-domi_valor" class="col-form-label">Valor:</label>
-                            </div>
-                            <div class="col-md-9 ms-auto">
-                                <input type="text" class="form-control" id="npt-domi_valor" placeholder="Digite el valor">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6 ms-auto">
-                                <button type="button" class="btn btn-primary" id="horaActual">Hora de Salida</button>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <input type="text" class="form-control" id="npt-domi_hora_salida" placeholder="Click en el botón" disabled>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 ms-auto">
-                                <label for="slct-user" class="col-form-label">Asigna:</label>
-                            </div>
-                            <div class="col-md-9 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-user_id">
-                                <div class="selectUser">
-                                    <select class="form-select" id="slct-user"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 ms-auto">
-                                <label for="npt-domi_observacion" class="col-form-label">Observación:</label>
-                            </div>
-                            <div class="col-md-9 ms-auto">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="npt-domi_observacion" placeholder="Digite Observación">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="btnConfirmAdd">Confirma Agregar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" id="btnConfirmEdit">Confirma Modificar</button>
-                </div>
+        <div class="modal-body">
+          <form id="frmDomicilios">
+            <div class="row">
+              <input type="hidden" class="form-control" id="npt-domi_id">
             </div>
-        </div>
-    </div>
-    <!-- FIN MODAL NUEVO DOMICILIO -->
-    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <!-- INICIA MODAL EDITAR REGISTRO-->
-    <div class="modal fade" data-bs-backdrop="static" id="mdlEditDomicilios" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">EDITAR REGISTRO</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="row mb-3">
+              <div class="col-md-3 ms-auto">
+                <label for="slct-barrio" class="col-form-label">Barrio:</label>
+              </div>
+              <div class="col-md-9 ms-auto">
+                <input type="hidden" class="form-control" id="npt-barrio_id">
+                <div class="selectBarrio">
+                  <select class="form-select" id="slct-barrio"></select>
                 </div>
-                <div class="modal-body">
-                    <form id="frmDomicilios">
-                        <div class="row">
-                            <input type="hidden" class="form-control" id="nptEdit-domi_id">
-                        </div>
-
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-barrio_nombre" class="col-form-label">Barrio:</label>
-                                <input type="text" class="form-control" id="nptEdit-barrio_nombre" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-barrio_id">
-                                <label for="slct-barrio" class="col-form-label">Editar Barrio:</label>
-                                <div class="selectBarrio">
-                                    <select class="form-select" id="slct-barrio"></select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-trans_nombre" class="col-form-label">Transportador:</label>
-                                <input type="text" class="form-control" id="nptEdit-trans_nombre" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-trans_id">
-                                <label for="slct-trans" class="col-form-label">Editar Transportador:</label>
-                                <div class="selectTransportador">
-                                    <select class="form-select" id="slct-trans"></select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-domi_valor" class="col-form-label">Valor:</label>
-                                <input type="text" class="form-control" id="nptEdit-domi_valor" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <label for="npt-domi_valor" class="col-form-label">Editar Valor:</label>
-                                <input type="text" class="form-control" id="npt-domi_valor" placeholder="Digite el Valor">
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-domi_hora_salida" class="col-form-label">Hora/Salida:</label>
-                                <input type="text" class="form-control" id="nptEdit-domi_hora_salida" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-domi_hora_salida" class="col-form-label"> Editar Hora/Salida:</label>
-                                <input type="text" class="form-control" id="nptEdit-domi_hora_salida" placeholder="Digite hora de salida">
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="nptEdit-user_nombre" class="col-form-label">Asigna:</label>
-                                <input type="text" class="form-control" id="nptEdit-user_nombre" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <input type="hidden" class="form-control" id="npt-user_id">
-                                <label for="slct-user" class="col-form-label">Editar Asigna:</label>
-                                <div class="selectUser">
-                                    <select class="form-select" id="slct-user"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col-md-6 ms-auto">
-                                <label for="npt-domi_observacion" class="col-form-label">Observación:</label>
-                                <input type="text" class="form-control" id="nptEdit-domi_observacion" disabled>
-                            </div>
-                            <div class="col-md-6 ms-auto">
-                                <label for="npt-domi_observacion" class="col-form-label">Editar Observación:</label>
-                                <input type="text" class="form-control" id="npt-domi_observacion" placeholder="Digite Observación">
-                            </div>
-                        </div>
-                    </form>
-                </div> <!-- final del modal-body-->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="btnConfirmEdit">Confirma Modificar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                </div>
+              </div>
             </div>
+            <div class="row mb-3">
+              <div class="col-md-3 ms-auto">
+                <label for="slct-trans" class="col-form-label">Transportador:</label>
+              </div>
+              <div class="col-md-9 ms-auto">
+                <input type="hidden" class="form-control" id="npt-trans_id">
+                <div class="selectTransportador">
+                  <select class="form-select" id="slct-trans"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-3 ms-auto">
+                <label for="npt-domi_valor" class="col-form-label">Valor:</label>
+              </div>
+              <div class="col-md-9 ms-auto">
+                <input type="text" class="form-control" id="npt-domi_valor" placeholder="Digite el valor">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6 ms-auto">
+                <button type="button" class="btn btn-primary" id="horaActual">Hora de Salida</button>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <input type="text" class="form-control" id="npt-domi_hora_salida" placeholder="Click en el botón" disabled>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-3 ms-auto">
+                <label for="slct-user" class="col-form-label">Asigna:</label>
+              </div>
+              <div class="col-md-9 ms-auto">
+                <input type="hidden" class="form-control" id="npt-user_id">
+                <div class="selectUser">
+                  <select class="form-select" id="slct-user"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-3 ms-auto">
+                <label for="npt-domi_observacion" class="col-form-label">Observación:</label>
+              </div>
+              <div class="col-md-9 ms-auto">
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="npt-domi_observacion" placeholder="Digite Observación">
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="btnConfirmAdd">Confirma Agregar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btnConfirmEdit">Confirma Modificar</button>
+        </div>
+      </div>
     </div>
-    <!-- FIN MODAL EDITAR REGISTRO -->
-    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||| -->
-    <script>
-    // INICIA DATATABLES
-    document.addEventListener("DOMContentLoaded", function() {
-        let tabla1 = $("#tblDomicilios").DataTable({
-            "ajax": {
-                url: "domi_data.php?accion=listar_domicilio",
-                dataSrc: ""
-            },
-            "columns": [
-                { "data": "domi_id" },
-                { "data": "barrio_nombre" },
-                { "data": "barrio_comuna" },
-                { "data": "trans_nombre" },
-                { "data": "domi_valor" },
-                { "data": "domi_hora_salida" },
-                { "data": "domi_hora_llegada" },
-                { "data": "user_nombre" },
-                { "data": "domi_observacion" },
-                { "data": null, "orderable": false },
-                { "data": null, "orderable": false }
-            ],
-            "columnDefs": [{
-                    targets: 9,
-                    "defaultContent": "<button class='btn btn-primary btn-sm btnEdit' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pen' viewBox='0 0 16 16'><path d='m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z'/></svg></button>",
-                    data: null
-                },
+  </div>
+  <!-- FIN MODAL NUEVO DOMICILIO -->
+  <!-- |||||||||||||||||||||||||||||||||||||||||||||||||| -->
+  <!-- INICIA MODAL EDITAR REGISTRO-->
+  <div class="modal fade" data-bs-backdrop="static" id="mdlEditDomicilios" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">EDITAR REGISTRO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="frmDomicilios">
+            <div class="row">
+              <input type="hidden" class="form-control" id="nptEdit-domi_id">
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-barrio_nombre" class="col-form-label">Barrio:</label>
+                <input type="text" class="form-control" id="nptEdit-barrio_nombre" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <input type="hidden" class="form-control" id="npt-barrio_id">
+                <label for="slct-barrio" class="col-form-label">Editar Barrio:</label>
+                <div class="selectBarrio">
+                  <select class="form-select" id="slct-barrio"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-trans_nombre" class="col-form-label">Transportador:</label>
+                <input type="text" class="form-control" id="nptEdit-trans_nombre" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <input type="hidden" class="form-control" id="npt-trans_id">
+                <label for="slct-trans" class="col-form-label">Editar Transportador:</label>
+                <div class="selectTransportador">
+                  <select class="form-select" id="slct-trans"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-domi_valor" class="col-form-label">Valor:</label>
+                <input type="text" class="form-control" id="nptEdit-domi_valor" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <label for="npt-domi_valor" class="col-form-label">Editar Valor:</label>
+                <input type="text" class="form-control" id="npt-domi_valor" placeholder="Digite el Valor">
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-domi_hora_salida" class="col-form-label">Hora/Salida:</label>
+                <input type="text" class="form-control" id="nptEdit-domi_hora_salida" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-domi_hora_salida" class="col-form-label"> Editar Hora/Salida:</label>
+                <input type="text" class="form-control" id="nptEdit-domi_hora_salida" placeholder="Digite hora de salida">
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="nptEdit-user_nombre" class="col-form-label">Asigna:</label>
+                <input type="text" class="form-control" id="nptEdit-user_nombre" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <input type="hidden" class="form-control" id="npt-user_id">
+                <label for="slct-user" class="col-form-label">Editar Asigna:</label>
+                <div class="selectUser">
+                  <select class="form-select" id="slct-user"></select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-md-6 ms-auto">
+                <label for="npt-domi_observacion" class="col-form-label">Observación:</label>
+                <input type="text" class="form-control" id="nptEdit-domi_observacion" disabled>
+              </div>
+              <div class="col-md-6 ms-auto">
+                <label for="npt-domi_observacion" class="col-form-label">Editar Observación:</label>
+                <input type="text" class="form-control" id="npt-domi_observacion" placeholder="Digite Observación">
+              </div>
+            </div>
+          </form>
+        </div> <!-- final del modal-body-->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="btnConfirmEdit">Confirma Modificar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN MODAL EDITAR REGISTRO -->
+  <!-- |||||||||||||||||||||||||||||||||||||||||||||||||| -->
+  <script>
+  // INICIA DATATABLES
+  document.addEventListener("DOMContentLoaded", function() {
+    let listadoDomicilios = $("#tblDomicilios").DataTable({
+      "ajax": {
+        url: "domi_data.php?accion=listar_domicilio",
+        dataSrc: ""
+      },
+      "columns": [
+        { "data": "domi_id" },
+        { "data": "barrio_nombre" },
+        { "data": "barrio_comuna" },
+        { "data": "trans_nombre" },
+        { "data": "domi_valor" },
+        { "data": "domi_hora_salida" },
+        { "data": "domi_hora_llegada" },
+        { "data": "user_nombre" },
+        { "data": "domi_observacion" },
+        { "data": null, "orderable": false },
+        { "data": null, "orderable": false },
+        { "data": null, "orderable": false }
+      ],
+      "columnDefs": [{
+          targets: 9,
+          "defaultContent": "<button class='btn btn-primary btnArriveHour'><i class='fa-solid fa-clock'></i></button>",
+          data: null
+        },
+        {
+          targets: 10,
+          "defaultContent": "<button class='btn btn-primary btnEdit'><i class='fa-solid fa-pen'></i></button>",
+          data: null
+        },
 
-                {
-                    targets: 10,
-                    "defaultContent": "<button class='btn btn-primary btnDel' ><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></button>",
-                    data: null
-                }
-            ],
-        });
-        // FIN DATATABLES
-
-        // Contenido del Select Barrio
-        $(document).ready(function() {
-            $.ajax({
-                type: "POST",
-                url: "getBarrio.php",
-                success: function(response) {
-                    $('.selectBarrio select').html(response).fadeIn();
-                }
-            });
-        });
-        // Contenido del Select Usuarios
-        $(document).ready(function() {
-            $.ajax({
-                type: "POST",
-                url: "getUser.php",
-                success: function(response) {
-                    $('.selectUser select').html(response).fadeIn();
-                }
-            });
-        });
-        // Contenido del Select Transportador
-        $(document).ready(function() {
-            $.ajax({
-                type: "POST",
-                url: "getTransportador.php",
-                success: function(response) {
-                    $('.selectTransportador select').html(response).fadeIn();
-                }
-            });
-        });
-        //tomar el valor del select y ponerlo en input
-        $("#slct-barrio").change(function() {
-            $('#npt-barrio_id').val($(this).val());
-        });
-        $("#slct-trans").change(function() {
-            $('#npt-trans_id').val($(this).val());
-        });
-        $("#slct-user").change(function() {
-            $('#npt-user_id').val($(this).val());
-        });
-        // EVENTOS DE BOTONES
-        $('#btn-Add').click(function() {
-            $('#btnConfirmAdd').show();
-            $('#btnConfirmEdit').hide();
-            limpiarFormulario();
-            $("#mdlDomicilios").modal('show');
-        });
-
-        //MOSTRAR LA FECHA ACTUAL EN EL INPUT
-        $('#horaActual').click(function() {
-            let hour = actualDate();
-            $('#npt-domi_hora_salida').val(hour);
-        });
-
-
-        $('#btnConfirmAdd').click(function() {
-            //validar formulario emergente y enviarlo
-            let valida_barrio = $('#npt-barrio_id').val();
-            let valida_transportador = $('#npt-trans_id').val();
-            let valida_valor = $('#npt-domi_valor').val();
-            let valida_hora_salida = $('#npt-domi_hora_salida').val();
-            let valida_asigna = $('#npt-user_id').val();
-            if (valida_barrio.trim() == '') {
-                alert('elija un barrio.');
-                $('#slct-barrio').focus();
-                return false;
-            } else if (valida_transportador.trim() == '') {
-                alert('Elija un transportador');
-                $('#slct-trans').focus();
-                return false;
-            } else if (valida_valor.trim() == '') {
-                alert('escriba un valor');
-                $('#npt-domi_valor').focus();
-                return false;
-            } else if (valida_hora_salida.trim() == '') {
-                alert('Revise hora de salida');
-                $('#npt-domi_hora_salida').focus();
-                return false;
-            } else if (valida_asigna.trim() == '') {
-                alert('elija quien asigna');
-                $('#slct-user').focus();
-                return false;
-            } else {
-                //ejecutar con todo validado
-                $("#mdlDomicilios").modal('hide');
-                let registro = recuperarDatosFormulario();
-                agregarRegistro(registro);
-                //alert("ok Validado");
-            }
-        });
-        // fin validacion de formulario
-
-        $('#btnConfirmEdit').click(function() {
-            $("#mdlDomicilios").modal('hide');
-            let registro = recuperarDatosFormulario();
-            modificarRegistro(registro);
-        });
-
-        $('#tblDomicilios tbody').on('click', 'button.btnEdit', function() {
-            //$('#btnConfirmEdit').show();
-            let registro = tabla1.row($(this).parents('tr')).data();
-            recuperarRegistro(registro.domi_id);
-        });
-
-        $('#tblDomicilios tbody').on('click', 'button.btnDel', function() {
-            if (confirm("¿Confirma la Eliminación?")) {
-                let registro = tabla1.row($(this).parents('tr')).data();
-                borrarRegistro(registro.domi_id);
-            }
-        });
-        // INTERACTUAR CON EL FORMULARIO MODAL
-
-        function limpiarFormulario() {
-            $('#npt-domi_id').val('');
-            $('#npt-barrio_id').val('');
-            $('#slct-barrio').val('0');
-            $('#npt-trans_id').val('');
-            $('#slct-trans').val('0');
-            $('#npt-domi_valor').val('');
-            $('#npt-domi_hora_salida').val('');
-            $('#npt-user_id').val('');
-            $('#slct-user').val('0');
-            $('#npt-domi_observacion').val('');
+        {
+          targets: 11,
+          "defaultContent": "<button  class='btn btn-danger btnDel'><i class='fa fa-trash-o fa-lg'></i></button>",
+          data: null
         }
-
-        function recuperarDatosFormulario() {
-            let registro = {
-                domi_id: $('#npt-domi_id').val(),
-                barrio_id: $('#npt-barrio_id').val(),
-                trans_id: $('#npt-trans_id').val(),
-                domi_valor: $('#npt-domi_valor').val(),
-                domi_hora_salida: $('#npt-domi_hora_salida').val(),
-                user_id: $('#npt-user_id').val(),
-                domi_observacion: $('#npt-domi_observacion').val(),
-            };
-            return registro;
-        }
-
-
-        // MUESTRA LA HORA ACTUAL
-        function actualDate() {
-            var dt = new Date();
-            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-            return time;
-        };
-
-        // COMUNICARSE CON EL SERVIDOR VIA AJAX
-        function agregarRegistro(registro) {
-            $.ajax({
-                type: 'POST',
-                url: 'domi_data.php?accion=agregar_domicilio',
-                data: registro,
-                success: function(msg) {
-                    tabla1.ajax.reload();
-                },
-                error: function() {
-                    alert("problema en: agregarRegistro");
-                }
-            });
-        }
-
-        function borrarRegistro(domi_id) {
-            $.ajax({
-                type: 'GET',
-                url: 'domi_data.php?accion=borrar_domicilio&domi_id=' + domi_id,
-                data: '',
-                success: function(msg) {
-                    tabla1.ajax.reload();
-                },
-                error: function() {
-                    alert("Problema Borrando");
-                }
-            });
-        }
-
-        function recuperarRegistro(domi_id) {
-            $.ajax({
-                type: 'GET',
-                url: 'domi_data.php?accion=consultar_domicilio&domi_id=' + domi_id,
-                data: '',
-                success: function(datos) {
-                    $('#nptEdit-domi_id').val(datos[0].domi_id);
-                    $('#nptEdit-barrio_nombre').val(datos[0].barrio_nombre);
-                    $('#nptEdit-trans_nombre').val(datos[0].trans_nombre);
-                    $('#nptEdit-domi_valor').val(datos[0].domi_valor);
-                    $('#nptEdit-domi_hora_salida').val(datos[0].domi_hora_salida);
-                    $('#nptEdit-user_nombre').val(datos[0].user_nombre);
-                    $('#nptEdit-domi_observacion').val(datos[0].domi_observacion);
-                    $("#mdlEditDomicilios").modal('show');
-                },
-                error: function() {
-                    alert("Problema recuperando");
-                }
-            });
-        }
-
-        function modificarRegistro(registro) {
-            $.ajax({
-                type: 'POST',
-                url: 'domi_data.php?accion=modificar_domicilio&domi_id=' + registro.domi_id,
-                data: registro,
-                success: function(msg) {
-                    tabla1.ajax.reload();
-                },
-                error: function() {
-                    alert("Problema modificando");
-                }
-            });
-        }
-
+      ],
     });
-    </script>
+    // FIN DATATABLES
+
+    // Contenido del Select Barrio
+    $(document).ready(function() {
+      $.ajax({
+        type: "POST",
+        url: "getBarrio.php",
+        success: function(response) {
+          $('.selectBarrio select').html(response).fadeIn();
+        }
+      });
+    });
+    // Contenido del Select Usuarios
+    $(document).ready(function() {
+      $.ajax({
+        type: "POST",
+        url: "getUser.php",
+        success: function(response) {
+          $('.selectUser select').html(response).fadeIn();
+        }
+      });
+    });
+    // Contenido del Select Transportador
+    $(document).ready(function() {
+      $.ajax({
+        type: "POST",
+        url: "getTransportador.php",
+        success: function(response) {
+          $('.selectTransportador select').html(response).fadeIn();
+        }
+      });
+    });
+    //tomar el valor del select y ponerlo en input
+    $("#slct-barrio").change(function() {
+      $('#npt-barrio_id').val($(this).val());
+    });
+    $("#slct-trans").change(function() {
+      $('#npt-trans_id').val($(this).val());
+    });
+    $("#slct-user").change(function() {
+      $('#npt-user_id').val($(this).val());
+    });
+    // EVENTOS DE BOTONES
+    $('#btn-Add').click(function() {
+      $('#btnConfirmAdd').show();
+      $('#btnConfirmEdit').hide();
+      limpiarFormulario();
+      $("#mdlDomicilios").modal('show');
+    });
+
+    //MOSTRAR LA FECHA ACTUAL EN EL INPUT
+    $('#horaActual').click(function() {
+      let hour = actualDate();
+      $('#npt-domi_hora_salida').val(hour);
+    });
+
+
+    $('#btnConfirmAdd').click(function() {
+      //validar formulario emergente y enviarlo
+      let valida_barrio = $('#npt-barrio_id').val();
+      let valida_transportador = $('#npt-trans_id').val();
+      let valida_valor = $('#npt-domi_valor').val();
+      let valida_hora_salida = $('#npt-domi_hora_salida').val();
+      let valida_asigna = $('#npt-user_id').val();
+      if (valida_barrio.trim() == '') {
+        alert('elija un barrio.');
+        $('#slct-barrio').focus();
+        return false;
+      } else if (valida_transportador.trim() == '') {
+        alert('Elija un transportador');
+        $('#slct-trans').focus();
+        return false;
+      } else if (valida_valor.trim() == '') {
+        alert('escriba un valor');
+        $('#npt-domi_valor').focus();
+        return false;
+      } else if (valida_hora_salida.trim() == '') {
+        alert('Revise hora de salida');
+        $('#npt-domi_hora_salida').focus();
+        return false;
+      } else if (valida_asigna.trim() == '') {
+        alert('elija quien asigna');
+        $('#slct-user').focus();
+        return false;
+      } else {
+        //ejecutar con todo validado
+        $("#mdlDomicilios").modal('hide');
+        let registro = recuperarDatosFormulario();
+        agregarRegistro(registro);
+        //alert("ok Validado");
+      }
+    });
+    // fin validacion de formulario
+
+    $('#btnConfirmEdit').click(function() {
+      $("#mdlDomicilios").modal('hide');
+      let registro = recuperarDatosFormulario();
+      modificarRegistro(registro);
+    });
+
+    $('#tblDomicilios tbody').on('click', 'button.btnEdit', function() {
+      //$('#btnConfirmEdit').show();
+      let registro = listadoDomicilios.row($(this).parents('tr')).data();
+      recuperarRegistro(registro.domi_id);
+    });
+
+    $('#tblDomicilios tbody').on('click', 'button.btnDel', function() {
+      if (confirm("¿Confirma la Eliminación?")) {
+        let registro = listadoDomicilios.row($(this).parents('tr')).data();
+        borrarRegistro(registro.domi_id);
+      }
+    });
+    // INTERACTUAR CON EL FORMULARIO MODAL
+
+    function limpiarFormulario() {
+      $('#npt-domi_id').val('');
+      $('#npt-barrio_id').val('');
+      $('#slct-barrio').val('0');
+      $('#npt-trans_id').val('');
+      $('#slct-trans').val('0');
+      $('#npt-domi_valor').val('');
+      $('#npt-domi_hora_salida').val('');
+      $('#npt-user_id').val('');
+      $('#slct-user').val('0');
+      $('#npt-domi_observacion').val('');
+    }
+
+    function recuperarDatosFormulario() {
+      let registro = {
+        domi_id: $('#npt-domi_id').val(),
+        barrio_id: $('#npt-barrio_id').val(),
+        trans_id: $('#npt-trans_id').val(),
+        domi_valor: $('#npt-domi_valor').val(),
+        domi_hora_salida: $('#npt-domi_hora_salida').val(),
+        user_id: $('#npt-user_id').val(),
+        domi_observacion: $('#npt-domi_observacion').val(),
+      };
+      return registro;
+    }
+
+
+    // MUESTRA LA HORA ACTUAL
+    function actualDate() {
+      var dt = new Date();
+      var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+      return time;
+    };
+
+    // COMUNICARSE CON EL SERVIDOR VIA AJAX
+    function agregarRegistro(registro) {
+      $.ajax({
+        type: 'POST',
+        url: 'domi_data.php?accion=agregar_domicilio',
+        data: registro,
+        success: function(msg) {
+          listadoDomicilios.ajax.reload();
+        },
+        error: function() {
+          alert("problema en: agregarRegistro");
+        }
+      });
+    }
+
+    function borrarRegistro(domi_id) {
+      $.ajax({
+        type: 'GET',
+        url: 'domi_data.php?accion=borrar_domicilio&domi_id=' + domi_id,
+        data: '',
+        success: function(msg) {
+          listadoDomicilios.ajax.reload();
+        },
+        error: function() {
+          alert("Problema Borrando");
+        }
+      });
+    }
+
+    function recuperarRegistro(domi_id) {
+      $.ajax({
+        type: 'GET',
+        url: 'domi_data.php?accion=consultar_domicilio&domi_id=' + domi_id,
+        data: '',
+        success: function(datos) {
+          $('#nptEdit-domi_id').val(datos[0].domi_id);
+          $('#nptEdit-barrio_nombre').val(datos[0].barrio_nombre);
+          $('#nptEdit-trans_nombre').val(datos[0].trans_nombre);
+          $('#nptEdit-domi_valor').val(datos[0].domi_valor);
+          $('#nptEdit-domi_hora_salida').val(datos[0].domi_hora_salida);
+          $('#nptEdit-user_nombre').val(datos[0].user_nombre);
+          $('#nptEdit-domi_observacion').val(datos[0].domi_observacion);
+          $("#mdlEditDomicilios").modal('show');
+        },
+        error: function() {
+          alert("Problema recuperando");
+        }
+      });
+    }
+
+    function modificarRegistro(registro) {
+      $.ajax({
+        type: 'POST',
+        url: 'domi_data.php?accion=modificar_domicilio&domi_id=' + registro.domi_id,
+        data: registro,
+        success: function(msg) {
+          listadoDomicilios.ajax.reload();
+        },
+        error: function() {
+          alert("Problema modificando");
+        }
+      });
+    }
+
+  });
+  </script>
 </body>

@@ -149,10 +149,15 @@ hoy se realizo:
 - se podria comenzar con la construccion del modulo de validacion el cual permitiria ahorrar mas tiempo en el  agregado de nuevos registros y abre la posibilidad para ir activando otras funciones por perfiles.
 
 ### 2022-12-16vie_10:57
-- se adecua diseño a dos columnas para el formulario de edición.
-- se adecua el diseño de los campos de presentación del registro a editar y los campos de edicion.
+- Se adecua diseño a dos columnas para el formulario de edición.
+- Se adecua el diseño de los campos de presentación del registro a editar y los campos de edicion.
 
-Queda claro que para mostrar los datos de los selecto debo usar el campo de nombres, pero para introducir el dato a la base de datos de la modificacion que hace el select debo hacerlo con el campo de los id, esto lo manejo con inputs ocultos para poner y mover los datos.
+Queda claro que para mostrar los datos de los select debo usar el campo de nombres, pero para introducir el dato a la base de datos de la modificacion que hace el select debo hacerlo con el campo de los id, esto lo manejo con inputs ocultos para poner y mover los datos.
+
+### 2022-12-16vie_14:15
+ trabajo en esta jornada:
+ - Arreglar la comunicacion del formulario de edición para que grabe los datos.
+ - Colocar el botón de hora de llegada
 
 
 

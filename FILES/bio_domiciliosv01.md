@@ -132,7 +132,7 @@ La primera es rediseñar el formulario de domicilio nuevo, y lo voy a poner a fu
 ## ARREGLO DE LA CONEXION DEL FORMULARIO MODAL.
 
 
-2022-12-15jue_18:44
+### 2022-12-15jue_18:44
 hoy se realizo:
 
 - se arregla el acceso al formulario de agregar
@@ -147,6 +147,14 @@ hoy se realizo:
 - construir el formulario de edicion de los registro, com ose ha planteado mas arriba.
 
 - se podria comenzar con la construccion del modulo de validacion el cual permitiria ahorrar mas tiempo en el  agregado de nuevos registros y abre la posibilidad para ir activando otras funciones por perfiles.
+
+### 2022-12-16vie_10:57
+- se adecua diseño a dos columnas para el formulario de edición.
+- se adecua el diseño de los campos de presentación del registro a editar y los campos de edicion.
+
+Queda claro que para mostrar los datos de los selecto debo usar el campo de nombres, pero para introducir el dato a la base de datos de la modificacion que hace el select debo hacerlo con el campo de los id, esto lo manejo con inputs ocultos para poner y mover los datos.
+
+
 
 
 

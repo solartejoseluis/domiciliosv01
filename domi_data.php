@@ -59,12 +59,15 @@ case 'consultar_domicilio':
 // Para cargar el formulario de edicion del  domicilio
     $sql = "SELECT
         domicilios.domi_id,
+        barrios.barrio_id,
         barrios.barrio_nombre,
         barrios.barrio_comuna,
+        transportadores.trans_id,
         transportadores.trans_nombre,
         domicilios.domi_valor,
         domicilios.domi_hora_salida,
         domicilios.domi_hora_llegada,
+        users.user_id,
         users.user_nombre,
         domicilios.domi_observacion
         FROM domicilios

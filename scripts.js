@@ -39,108 +39,52 @@
     });
     // FIN DATATABLES
 
-// ejemplo select2
-// $('#slct-barrio').select2({
-//   ajax: {
-//     //dropdownParent: $('#mdlDomicilios'),
-//     url: 'getBarrio.php',
-//     dataType: 'json',
-//     type: 'POST',
-//       // processResults: function (barrios_result) {
-//       // Transforms the top-level key of the response object from 'items' to 'results'
-//       //$('.selectBarrio select').html(response).fadeIn();
-//       // return {
-//       // results: barrios_result
-//       // };
-//     // }
-//   }
-// });
 
-// $('#slct-barrio').select2({
-//     ajax: {
-//         url: "getBarrio.php",
-//         type:'GET',
-//         dataType: 'json',
-//         delay: 250,
-//         data: function (params) {
-//             return {
-//                 q: params.term // search term
-//             };
-//         },
-//         processResults: function (data) {
-//             // parse the results into the format expected by Select2.
-//             // since we are using custom formatting functions we do not need to
-//             // alter the remote JSON data
-//             return {
-//                 results: data
-//             };
-//         },
-//         cache: true
-//     },
-//     minimumInputLength: 2
-// });
-
-
-$(document).ready(function() {
-  $('#slct-barrio').select2();
+$(document).ready(function(){
+// INICIA PRUEBA SELECT2
+$( ".prueba1" ).select2({
+    ajax: {
+        url: "getPrueba1.php",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+            return {
+                q: params.term // search term
+            };
+        },
+        processResults: function (data) {
+            // parse the results into the format expected by Select2.
+            // since we are using custom formatting functions we do not need to
+            // alter the remote JSON data
+            return {
+                results: data
+            };
+        },
+        cache: true
+    },
+    minimumInputLength: 2
+});
+// FIN PRUEBA SELECT2
 });
 
-// $('#slct-barrio').select2({
-//     ajax: {
-//         url: "getBarrio.php",
-//         type:'GET',
-//         dataType: 'json',
-//         delay: 250,
-//         data: function (params) {
-//             return {
-//                 q: params.term // search term
-//             };
-//         },
-//         processResults: function (data) {
-//             // parse the results into the format expected by Select2.
-//             // since we are using custom formatting functions we do not need to
-//             // alter the remote JSON data
-//             return {
-//                 results: data
-//             };
-//         },
-//         cache: true
-//     },
-//     minimumInputLength: 2
-// });
 
 
 
-// $(document).ready(function(){
-//    $('#slct-barrio').select2({
-//     minimumInputLength: 2,
-//     ajax: {
-//       url: "getBarrio.php",
-//       dataType: 'json',
-//       data: function (term, page) {
-//         return {
-//           q: term
-//         };
-//       },
-//       results: function (data, page) {
-//         return { results: data };
-//       }
-//     }
-//   });
-// });
 
 
-    // Contenido del Select Barrio
-    // $(document).ready(function() {
-    //   $.ajax({
-    //     type: "POST",
-    //     url: "getBarrio.php",
-    //     success: function(response) {
-    //       $('.selectBarrio select').html(response).fadeIn();
-    //     }
-    //   });
-    // });
-    // Contenido del Select Usuarios
+    //Contenido del Select Barrio
+    $(document).ready(function() {
+      $.ajax({
+        type: "POST",
+        url: "getBarrio.php",
+        success: function(response) {
+          $('.selectBarrio select').html(response).fadeIn();
+        }
+      });
+    });
+
+
+    //Contenido del Select Usuarios
     $(document).ready(function() {
       $.ajax({
         type: "POST",

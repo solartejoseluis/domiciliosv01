@@ -40,9 +40,8 @@
     // FIN DATATABLES
 
 
-$(document).ready(function(){
-// INICIA PRUEBA SELECT2
-$( ".prueba1" ).select2({
+//  NUEVA PRUEBA
+$('#slct-prueba1' ).select2({
     ajax: {
         url: "getPrueba1.php",
         dataType: 'json',
@@ -64,8 +63,12 @@ $( ".prueba1" ).select2({
     },
     minimumInputLength: 2
 });
-// FIN PRUEBA SELECT2
-});
+
+
+//  FIN NUEVA PRUEBA
+
+
+
 
 
 

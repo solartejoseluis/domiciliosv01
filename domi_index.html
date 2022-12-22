@@ -11,6 +11,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.12.1/datatables.min.css" />
   <!-- select2 css-->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <!-- parche para funcionamiento de select2 en modal -->
+<!--   <script type="text/javascript">
+    $.fn.modal.Constructor.prototype._enforceFocus = function() {};
+  </script> -->
 </head>
 
 <body>
@@ -23,7 +27,7 @@
     <div class="row">
       <div class="col-6">
         <h1> FECHA ACTUAL</h1>
-    <select class="prueba1" id="slct-prueba1"></select>
+    <select class="form-control" id="slct-prueba1"  style="width: 300px"></select>
       </div>
       <div class="col-6 mr-auto">
         <button type="button" class="btn btn-primary" id="btn-Add" data-bs-toggle="modal">NUEVO DOMICILIO <i class="fa-solid fa-circle-plus"></i></i></button>
@@ -55,7 +59,8 @@
     </div>
   </div>
   <!-- INICIA MODAL NUEVO DOMICILIO-->
-  <div class="modal fade" data-bs-backdrop="static" id="mdlDomicilios" tabindex="-1">
+  <div class="modal fade" data-bs-backdrop="static" id="mdlDomicilios" data-focus="false">
+  <!-- <div class="modal fade" id="mdlDomicilios"> -->
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -73,9 +78,12 @@
               </div>
               <div class="col-md-9 ms-auto">
                 <input type="hidden" class="form-control" id="npt-barrio_id">
-                <div class="selectBarrio">
-                  <select class="form-select" id="slct-barrio"></select>
-                </div>
+                <!-- <div class="selectBarrio"> -->
+                  <!-- <select class="form-select" id="slct-barrio"></select> -->
+                <!-- </div> -->
+<div>
+    <select class="form-select" id="slct-prueba1"></select>
+</div>
               </div>
             </div>
             <div class="row mb-3">
@@ -241,5 +249,7 @@
   <script src="https://kit.fontawesome.com/382e1ebb20.js" crossorigin="anonymous"></script>
   <!-- select2 js-->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/es.js"></script>
+  <!-- scripts de la aplicacion -->
   <script src="scripts.js"></script>
 </body>

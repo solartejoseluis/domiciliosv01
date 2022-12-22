@@ -1,7 +1,7 @@
 <?php
 //header('Content-Type: application/json');
 require "pdo.php";
-$sql="SELECT barrio_id,barrio_nombre FROM barrios";
+$sql="SELECT barrio_id,barrio_nombre FROM barrios ORDER BY barrio_nombre";
 $stmt = $pdo-> prepare($sql);
 $stmt -> execute();
 $barrios_result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
